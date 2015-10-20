@@ -56,3 +56,13 @@
   border: 5px #ffffff solid;
 }
 
+.text {
+	border:0;
+	padding:10px;
+	font-size:1.3em;
+	font-family:Arial, sans-serif;
+	color:#111;
+	border:solid 1px #ccc;
+	margin:0 0 20px;
+	width:300px;
+}
