@@ -1,6 +1,8 @@
 var Page = function(){
 };
 
+var usernameKey = "username";
+
 Page.prototype.load = function(){
   var context = this;
   var tabId   = 0;
@@ -10,7 +12,11 @@ Page.prototype.load = function(){
   $(".loading").show();
   $(".image").hide().each(function(){
     var image = $(this);
-    $.getJSON("http://www.lgtm.in/g?" + Math.random(), function (data) {
+	var url = "http://lgtm.in/g/";
+	if (localStorage.hasOwnProperty(usernameKey)){
+		url += localStorage.getItem(usernameKey);
+	}
+    $.getJSON(url + "?" + Math.random(), function (data) {
       image.attr("src", data.imageUrl);
       image.unbind().click(function(){
         chrome.tabs.sendMessage(tabId, {image: "![LGTM](" + image.attr("src") + ")"}, function(response){});
